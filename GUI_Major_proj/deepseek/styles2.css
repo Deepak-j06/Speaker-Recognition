@@ -1,0 +1,107 @@
+:root {
+    --vh: 1vh;
+}
+
+/* Mobile-First Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
+    background: url('images/w2.jpg') no-repeat center center/cover;
+    color: #333;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    margin: 1rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+h2 {
+    color: #ff6f61;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+/* Enrollment Page Specific Styles */
+#sentencesGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.sentence-card {
+    background: white;
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sentence-text {
+    font-size: 0.95rem;
+    margin: 0 0 1rem 0;
+    line-height: 1.4;
+    color: #444;
+}
+
+.controls {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button {
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 0.6rem;
+    background: #ff6f61;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex: 1;
+    min-width: 120px;
+}
+
+button:disabled {
+    background: #ddd;
+    cursor: not-allowed;
+}
+
+button.recording {
+    background: #ff4a3d;
+    animation: pulse 1.5s infinite;
+}
+
+audio {
+    width: 100%;
+    margin-top: 1rem;
+    border-radius: 0.6rem;
+}
+
+.submit-section {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}

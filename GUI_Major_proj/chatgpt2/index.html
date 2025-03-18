@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaker Recognition</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="container">
+        <h2>Welcome Back!</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+        </form>
+        <p><a href="#" id="forgotPassword">Forgot Password?</a></p>
+        <p>New here? <a href="#" id="createAccount">Create Account</a></p>
+    </div>
+
+    <!-- Enrollment Page (Initially Hidden) -->
+    <div id="enrollPage" class="container hidden">
+        <h2>Enroll Your Voice</h2>
+        <p>Read and record each sentence below:</p>
+        <div id="sentencesContainer"></div>
+        <button id="submitVoice" disabled>🚀 Submit All Recordings</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

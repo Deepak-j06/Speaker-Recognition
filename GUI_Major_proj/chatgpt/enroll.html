@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enroll - Voice Recording</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Enroll Your Voice</h2>
+        <p id="text-prompt">Please say the following sentence:</p>
+        <p class="sentence">"The quick brown fox jumps over the lazy dog."</p>
+
+        <button id="start-record">Start Recording</button>
+        <button id="stop-record" disabled>Stop Recording</button>
+        <audio id="audio-player" controls></audio>
+        <button id="submit-recording" disabled>Submit</button>
+    </div>
+
+    <script>
+        let mediaRecorder;
+        let audioChunks = [];
+
+        document.getElementById('start-record').addEventListener('click', async function() {
+            let stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder = new MediaRecorder(stream);
+            audioChunks = [];
+
+            mediaRecorder.ondataavailable = event => {
+                audioChunks.push(event.data);
+            };
+
+            mediaRecorder.onstop = () => {
+                let audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                let audioUrl = URL.createObjectURL(audioBlob);
+                document.getElementById('audio-player').src = audioUrl;
+                document.getElementById('submit-recording').disabled = false;
+
+                // Convert Blob to File for upload
+                let file = new File([audioBlob], "recording.wav", { type: "audio/wav" });
+
+                // Simulate file upload (Replace with real backend upload)
+                document.getElementById('submit-recording').addEventListener('click', () => {
+                    let formData = new FormData();
+                    formData.append("audio", file);
+                    alert("Recording submitted! (Backend upload needed)");
+                });
+            };
+
+            mediaRecorder.start();
+            document.getElementById('start-record').disabled = true;
+            document.getElementById('stop-record').disabled = false;
+        });
+
+        document.getElementById('stop-record').addEventListener('click', function() {
+            mediaRecorder.stop();
+            document.getElementById('start-record').disabled = false;
+            document.getElementById('stop-record').disabled = true;
+        });
+    </script>
+</body>
+</html>

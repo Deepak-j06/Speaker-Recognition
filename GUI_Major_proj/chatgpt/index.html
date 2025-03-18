@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaker Recognition - Voice Enrollment</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Enrollment Page -->
+    <div id="enrollPage" class="container">
+        <h2>Enroll Your Voice</h2>
+        <p id="progress">Sentence <span id="currentSentence">1</span> of 33</p>
+        <p id="sentenceText"><strong>"Hello, my name is [Name]."</strong></p>
+
+        <button id="startRecord">🎤 Start Recording</button>
+        <button id="stopRecord" disabled>⏹️ Stop Recording</button>
+        <audio id="audioPlayback" controls class="hidden"></audio>
+        
+        <div class="nav-buttons">
+            <button id="prevSentence" disabled>⬅️ Previous</button>
+            <button id="nextSentence" disabled>➡️ Next</button>
+        </div>
+
+        <button id="submitVoice" class="hidden">🚀 Submit All Recordings</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
